@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Your To-Do List</title>
+      <link rel="stylesheet" type="text/css" href="toDo.css">
+      <script type="application/javascript">
+        function getUser() {
+          console.log(document.getElementById("myUserName").value);
+        }
+        function tabAwayUser() {
+          getUser();
+          document.getElementById("myUserName").readOnly = true;
+          document.getElementById("myUserName").style.color = "gray";
+          return true;
+        }
+        function submitUser() {
+          document.getElementById("toDoText").focus();
+          return false;
+        }
+      </script>
+  </head>
+  <body>  
+      <div id="outer">
+        <div id="container">
+          <div id="pageWelcome">
+            <div style="float:left; width:72%; font-size:26px; color:yellow; text-align:center;">
+               Your Important To-Do Items
+            </div>
+            <div id="loginInfo" style="position: relative; float:right; width:28%; text-align:right;">
+              <form style="position:absolute; bottom:25%; font-size:18px; padding-right:13px;" onsubmit="return submitUser()">
+                <label for="user">Your Name:</label>
+                <input id="myUserName" type="text" autocomplete="off" maxlength="20" onblur="tabAwayUser()"/>
+                <button id="invisSubmit" type="submit" tabindex="-1">Button invisibly here so enter key will cause submit.</button>
+              </form>
+            </div>
+            <div style='clear:both;'>&nbsp;</div>
+          </div>
+          <div id="controlPanel">
+            <form onsubmit="return false;">  
+              <label for="toDoText">Enter your To-Do:</label> 
+              <input type="text" id="toDoText" autocomplete="off" autofocus/> 
+              <button class="formButton" id="addToDo"> 
+                Submit
+              </button>
+              <div id ="buttonPair" style="float:right; margin-right: 3px;">
+                <button class="formButton" id="modifyToDo"> 
+                   Modify
+                </button>
+                <button class="formButton" id="deleteToDo">
+                   Delete
+                </button>
+              </div>
+            </form>
+          </div>
+          <table id="toDoTable">
+            <tbody id="toDoTBody">
+          
+            </tbody>
+          </table>
+          <p>&reg; Geoffrey Consulting Services 2020</p>
+        </div>
+      </div>
+      <script src="toDo.js"></script>
+  </body>
+</html>
+  
